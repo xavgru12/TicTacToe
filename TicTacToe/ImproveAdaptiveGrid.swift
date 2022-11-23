@@ -10,12 +10,51 @@ import SwiftUI
 struct improveAdaptiveGrid: View {
     @State private var width: CGFloat = 50
     var body: some View {
-        VStack {
+        let trial = UIScreen.main.bounds.width*0.9
+        ZStack {
             let gridWidth = UIScreen.main.bounds.width*0.9
             TicTacToeGrid(desiredwidth: gridWidth)
+            VStack(spacing: 0){
+                HStack(spacing: 0){
+                    HStack(spacing: 0){}
+                    .frame(width: trial/3, height: trial/3)
+                        .background(Color.black)
+                        .onTapGesture {
+                            print("UpLeft")
+                        }
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.purple)
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.orange)
+                    
+                }//.frame(width: trial, height: trial/3)
+                
+                HStack(spacing: 0){
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.white)
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.pink)
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.yellow)
+                    
+                    
+                }//.frame(width: trial, height: trial/3)
+                    //.background(Color.black)
+                HStack(spacing: 0){
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.red)
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.blue)
+                    HStack{}.frame(width: trial/3, height: trial/3)
+                        .background(Color.green)
+                }//.frame(width: trial, height: trial/3)
+                    //.background(Color.black)
             
-        }
+                
+        }.frame(width: trial, height: trial)
+            
     }
+}
 }
 
 
