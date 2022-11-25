@@ -64,35 +64,52 @@ struct GridLayout: View {
 }
 
 
+                    
 struct GridTouchSquareFields: View {
     let desiredSquareLength: CGFloat
+    @State private var showIt = false
     var body: some View {
         VStack(spacing: 0){
             HStack(spacing: 0){
-                HStack(spacing: 0){}
-                .frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .background(Color.black)
-                    .onTapGesture {
-                        print("UpLeft")
+                HStack(spacing: 0){
+                    if showIt{
+                        Circle().stroke(.blue, lineWidth: 10).frame(width: desiredSquareLength*0.7, height: desiredSquareLength*0.7)
                     }
-                HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .background(Color.purple)
+                
+                }
+                .frame(width: desiredSquareLength, height: desiredSquareLength)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    print("Show details for user")
+                    showIt.toggle()
+                }
+                
+                HStack{
+                    if showIt{
+                        Circle().stroke(.blue, lineWidth: 10).frame(width: desiredSquareLength*0.7, height: desiredSquareLength*0.7)
+                    }
+                }.frame(width: desiredSquareLength, height: desiredSquareLength)
+                    //.background(Color.red)
                 HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
                     .background(Color.orange)
-                
-            }//.frame(width: desiredSquareLength, height: desiredSquareLength/3)
+            }
             
             HStack(spacing: 0){
-                HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .background(Color.white)
-                HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .background(Color.pink)
+                HStack{
+                    if showIt{
+                        Circle().stroke(.blue, lineWidth: 10).frame(width: desiredSquareLength*0.7, height: desiredSquareLength*0.7)
+                    }
+                }.frame(width: desiredSquareLength, height: desiredSquareLength)
+                    //.background(Color.white)
+                HStack{
+                    ItemsInSquare(itemsize: desiredSquareLength*0.7)
+                    
+                }.frame(width: desiredSquareLength, height: desiredSquareLength)
+                    //.background(Color.pink)
                 HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
                     .background(Color.yellow)
-                
-                
-            }//.frame(width: desiredSquareLength, height: desiredSquareLength/3)
-                //.background(Color.black)
+            }
+            
             HStack(spacing: 0){
                 HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
                     .background(Color.red)
@@ -100,13 +117,63 @@ struct GridTouchSquareFields: View {
                     .background(Color.blue)
                 HStack{}.frame(width: desiredSquareLength, height: desiredSquareLength)
                     .background(Color.green)
-            }//.frame(width: desiredSquareLength, height: desiredSquareLength/3)
-                //.background(Color.black)
-        
-            
-        }//.frame(width: desiredSquareLength, height: desiredSquareLength)
-
-            
+            }
+        }
     }
 }
 
+
+//var drag: some Gesture {
+//    DragGesture(coordinateSpace: .named("Custom"))
+//        .onTapGesture {
+//                                print("Text tapped")
+//                            }
+//}
+
+//var tap: some Gesture {
+//    TapGesture(count: 1, coordinateSpace: .named("Custom"))
+//        .onEnded { print("Text tapped") }
+//}
+
+//struct TestTap: View {
+//    var body: some View {
+//        frame(in: .named("Custom")
+//                        .onTapGesture {
+//                                print("Text tapped")
+//                            }
+//
+//    }
+//}
+
+struct ItemsInSquare: View {
+    let itemsize: CGFloat
+    var body: some View {
+
+    let leftUpCorner = CGPoint(x: 0, y: 0)
+    let rightDownCorner = CGPoint(x: itemsize, y: itemsize)
+    let rightUpCorner = CGPoint(x: 0, y: itemsize)
+    let leftDownCorner = CGPoint(x: itemsize, y: 0)
+    ZStack{
+            Path { path in
+                path.move(to: leftUpCorner)
+                path.addLine(to: rightDownCorner)
+                path.move(to: rightUpCorner)
+                path.addLine(to: leftDownCorner)
+
+                path.closeSubpath()
+            }.stroke(.blue, lineWidth: 10)
+        
+    }.frame(width: itemsize, height: itemsize)
+        
+//        Rectangle{
+//            Circle()
+//        }.frame(width: itemsize, height: itemsize)
+//    Path { path in
+//        path.move(to: leftUpCorner)
+//        path.addLine(to: RighDownCorner)
+//
+//        path.closeSubpath()
+//    }.stroke(.blue, lineWidth: 10)
+    //Circle()
+}
+}
