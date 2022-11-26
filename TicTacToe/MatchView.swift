@@ -12,12 +12,52 @@ struct MatchView: View {
     var body: some View {
         let gridLength = UIScreen.main.bounds.width*0.9
         let squareLength = gridLength/3
+        let itemsLength = squareLength*0.7
         ZStack {
             GridLayout(desiredwidth: gridLength)
-            GridTouchSquareFields(desiredSquareLength: squareLength)
+            MyNewSquareFields(desiredSquareLength: squareLength, itemsInSquareLength: itemsLength)
+//            GridTouchSquareFields(desiredSquareLength: squareLength, itemsInSquareLength: itemsLength)
         }.frame(width: gridLength, height: gridLength)
     }
 }
+
+struct MyNewSquareFields: View {
+    let desiredSquareLength: CGFloat
+    let itemsInSquareLength: CGFloat
+//    private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    var body: some View {
+        let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+        let mycolor = Color.orange
+        LazyVGrid(columns: gridItemLayout, spacing: 0){
+            ForEach((0...8), id: \.self){
+                var x = $0
+                ZStack(){Text("Test")
+                    if x == 0{
+                        //print("okay!")
+//                        .contentShape(Rectangle())
+//                        Rectangle().background(Color.green) //.frame(width: nil, height: nil)
+                        Rectangle().fill(.clear).contentShape(Rectangle())
+                        .onTapGesture {print("hi from red")}
+                        //Color.red
+                            
+                    }
+                    if x == 1{
+                        Color.blue
+                    }
+                    if x == 7{
+                        Color.green
+                    }
+                }
+                .frame(width: desiredSquareLength, height: desiredSquareLength)
+                .onTapGesture {print("hi from square")}
+                .background(mycolor)
+            }
+        }
+    }
+}
+
+
+
 
 
 
@@ -68,6 +108,7 @@ struct GridLayout: View {
 struct GridTouchSquareFields: View {
     let desiredSquareLength: CGFloat
     @State private var showIt = false
+    let itemsInSquareLength: CGFloat //use everywhere for inner Stack width and length
     var body: some View {
         VStack(spacing: 0){
             HStack(spacing: 0){
@@ -121,7 +162,7 @@ struct GridTouchSquareFields: View {
         }
     }
 }
-
+//create a view called Square, put that Hstack in with the view Circle and the cross
 
 //var drag: some Gesture {
 //    DragGesture(coordinateSpace: .named("Custom"))
