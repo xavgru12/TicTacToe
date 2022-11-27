@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7D5CEF5B2927F9DD00A74DAC /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */; };
-		7D5CEF5D2927F9DD00A74DAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF5C2927F9DD00A74DAC /* ContentView.swift */; };
 		7D5CEF5F2927F9E100A74DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */; };
 		7D5CEF622927F9E100A74DAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D5CEF612927F9E100A74DAC /* Preview Assets.xcassets */; };
 		7D5CEF6C2927F9E100A74DAC /* TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF6B2927F9E100A74DAC /* TicTacToeTests.swift */; };
 		7D5CEF762927F9E100A74DAC /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF752927F9E100A74DAC /* TicTacToeUITests.swift */; };
 		7D5CEF782927F9E100A74DAC /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF772927F9E100A74DAC /* TicTacToeUITestsLaunchTests.swift */; };
+		7D7CF2F4292FC9A2000A5A18 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		7D5CEF572927F9DD00A74DAC /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
-		7D5CEF5C2927F9DD00A74DAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D5CEF612927F9E100A74DAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7D5CEF672927F9E100A74DAC /* TicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +43,7 @@
 		7D5CEF712927F9E100A74DAC /* TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5CEF752927F9E100A74DAC /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		7D5CEF772927F9E100A74DAC /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +94,8 @@
 		7D5CEF592927F9DD00A74DAC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */,
 				7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */,
-				7D5CEF5C2927F9DD00A74DAC /* ContentView.swift */,
 				7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */,
 				7D5CEF602927F9E100A74DAC /* Preview Content */,
 			);
@@ -257,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D5CEF5D2927F9DD00A74DAC /* ContentView.swift in Sources */,
+				7D7CF2F4292FC9A2000A5A18 /* MatchView.swift in Sources */,
 				7D5CEF5B2927F9DD00A74DAC /* TicTacToeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
+				DEVELOPMENT_TEAM = S4CNK69FK9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -448,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
+				DEVELOPMENT_TEAM = S4CNK69FK9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
