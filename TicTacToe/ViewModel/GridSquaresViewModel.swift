@@ -45,6 +45,9 @@ struct SquareTestView_Previews: PreviewProvider {
 
 extension MyNewSquareFields {
     @MainActor class TestView: ObservableObject{
-        @Published var squares: [Int] = [5]
+        @Published var squares: [SquareState] = [
+            .empty, .empty, .empty,
+            .circle, .empty, .cross,
+            .empty, .empty, .empty,]
     }
 }
