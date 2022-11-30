@@ -18,10 +18,21 @@ struct MatchView: View {
     }
 }
 
+var y=2
+
+class MatchViewController{
+    var squareStateViewModel: SquareStateViewModel!
+}
+
+
+
+//TestView.squares= [4, 3,2]
+
 struct MyNewSquareFields: View {
     let desiredSquareLength: CGFloat
     @State private var showCircle = false
     @State private var showCross = false
+    @StateObject private var testView = TestView()
     
     var body: some View {
         let itemsInSquareLength = desiredSquareLength*0.7
@@ -44,7 +55,7 @@ struct MyNewSquareFields: View {
                     if x == 1{
                         Color.blue
                     }
-                    if x==2{
+                    if x==y{
                         
                         if showCross{
                             Cross(itemsize: itemsInSquareLength )
@@ -58,6 +69,9 @@ struct MyNewSquareFields: View {
                     if x == 7{
                         Color.green
                     }
+                    if x==testView.squares[0]{
+                        Color.yellow
+                    }
                     
                 }
                 .frame(width: desiredSquareLength, height: desiredSquareLength)
@@ -67,7 +81,6 @@ struct MyNewSquareFields: View {
         }
     }
 }
-
 
 
 

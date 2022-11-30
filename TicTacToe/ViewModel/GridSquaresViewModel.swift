@@ -17,23 +17,34 @@ enum SquareState {
 //first test of viewmodel,
 //seems like published squares array cannot be changed? let us find out
 
-private class SquareStateViewModel: ObservableObject {
-    @Published var squares: [SquareState] = [.circle, .empty, .cross, .circle]
+class SquareStateViewModel: ObservableObject {
+    //@Published var squares: [SquareState] = [.circle, .empty, .cross, .circle]
     //squares.append(.circle)
+    var testvariable=3
 }
 
-struct SquareTestView: View {
-  @StateObject fileprivate var viewModel = SquareStateViewModel()
-  var body: some View {
-      ZStack{
-          Text("\(viewModel.squares[0])" as String)
-      }
-  }
-}
+//struct SquareTestView: View {
+//  var body: some View {
+//      ZStack{
+//          Text("\(viewModel.squares[0])" as String)
+//      }
+//  }
+//}
+
+//fileprivate func fillUI(){
+//    self.viewSquares = viewModel.squares
+//}
 
 
 struct SquareTestView_Previews: PreviewProvider {
     static var previews: some View {
-        SquareTestView()
+        //SquareTestView()
+        ZStack{}
+    }
+}
+
+extension MyNewSquareFields {
+    @MainActor class TestView: ObservableObject{
+        @Published var squares: [Int] = [5]
     }
 }
