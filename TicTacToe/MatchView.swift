@@ -13,26 +13,17 @@ struct MatchView: View {
         let squareLength = gridLength/3
         ZStack {
             GridLayout(desiredwidth: gridLength)
-            MyNewSquareFields(desiredSquareLength: squareLength)
+            MyNewSquareFields(desiredSquareLength: squareLength, viewModel: myview)
         }.frame(width: gridLength, height: gridLength)
     }
 }
 
-var y=2
-
-class MatchViewController{
-    var squareStateViewModel: SquareStateViewModel!
-}
-
-
-
-//TestView.squares= [4, 3,2]
 
 struct MyNewSquareFields: View {
     let desiredSquareLength: CGFloat
+    @StateObject var viewModel: MyObservableView
     @State private var showCircle = false
     @State private var showCross = false
-    @StateObject private var testView = TestView()
     
     var body: some View {
         let itemsInSquareLength = desiredSquareLength*0.7
@@ -43,7 +34,7 @@ struct MyNewSquareFields: View {
             //for squareState in testView.squares{
                 //var x = $0
                 ZStack(){Text("Test")
-                    switch testView.squares[square]{
+                    switch viewModel.squares[square]{
                     case .circle:
                         Circle().stroke(.blue, lineWidth: 10).frame(width: itemsInSquareLength, height: itemsInSquareLength)
                     case .cross:
@@ -51,12 +42,14 @@ struct MyNewSquareFields: View {
                     case .empty:
                         var l=5
                     }
-                    //create function for switchstate and kick out dummy var in .empty state
+                    //TODO: create function for switchstate and kick out dummy var in .empty state
                 
 
                 }
                 .frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .onTapGesture {print("hi from square \(square)")}
+                    .onTapGesture {print("hi from square \(square)")
+                        changeOneToCircle()
+                    }
                     //.background(mycolor)
             
             }
