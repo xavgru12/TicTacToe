@@ -21,7 +21,7 @@ struct SquareTestView_Previews: PreviewProvider {
     }
 }
 
-class MyObservableView: ObservableObject{
+class MatchViewModel: ObservableObject{
         @Published var squares: [SquareState] = [
             .empty, .empty, .empty,
             .circle, .empty, .cross,
@@ -29,10 +29,11 @@ class MyObservableView: ObservableObject{
 }
 
 
-var myview=MyObservableView()
+var matchViewModel=MatchViewModel()
 func changeOneToCircle(){
-    myview.squares[1] = .circle
+    matchViewModel.squares[1] = .circle
 }
+var myview2 = matchViewModel // also works to give argument myview2 to View
 
 
 

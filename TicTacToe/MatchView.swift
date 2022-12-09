@@ -13,7 +13,7 @@ struct MatchView: View {
         let squareLength = gridLength/3
         ZStack {
             GridLayout(desiredwidth: gridLength)
-            MyNewSquareFields(desiredSquareLength: squareLength, viewModel: myview)
+            MyNewSquareFields(desiredSquareLength: squareLength, viewModel: matchViewModel)
         }.frame(width: gridLength, height: gridLength)
     }
 }
@@ -21,7 +21,7 @@ struct MatchView: View {
 
 struct MyNewSquareFields: View {
     let desiredSquareLength: CGFloat
-    @StateObject var viewModel: MyObservableView
+    @StateObject var viewModel: MatchViewModel
     @State private var showCircle = false
     @State private var showCross = false
     
