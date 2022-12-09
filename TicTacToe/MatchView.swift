@@ -13,13 +13,15 @@ struct MatchView: View {
         let squareLength = gridLength/3
         ZStack {
             GridLayout(desiredwidth: gridLength)
-            MyNewSquareFields(desiredSquareLength: squareLength)
+            MyNewSquareFields(desiredSquareLength: squareLength, viewModel: matchViewModel)
         }.frame(width: gridLength, height: gridLength)
     }
 }
 
+
 struct MyNewSquareFields: View {
     let desiredSquareLength: CGFloat
+    @StateObject var viewModel: MatchViewModel
     @State private var showCircle = false
     @State private var showCross = false
     
@@ -28,46 +30,32 @@ struct MyNewSquareFields: View {
         let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
         let mycolor = Color.orange
         LazyVGrid(columns: gridItemLayout, spacing: 0){
-            ForEach((0...8), id: \.self){
-                var x = $0
+            ForEach(0..<9){ square in
+            //for squareState in testView.squares{
+                //var x = $0
                 ZStack(){Text("Test")
-                    if x == 0{
-                        if showCircle{
-                            Circle().stroke(.blue, lineWidth: 10).frame(width: itemsInSquareLength, height: itemsInSquareLength)
-                        }
-                        Rectangle().fill(.clear).contentShape(Rectangle())
-                            .onTapGesture {print("hi from circle")
-                            showCircle.toggle()
-                            }
-                            
+                    switch viewModel.squares[square]{
+                    case .circle:
+                        Circle().stroke(.blue, lineWidth: 10).frame(width: itemsInSquareLength, height: itemsInSquareLength)
+                    case .cross:
+                        Cross(itemsize: itemsInSquareLength )
+                    case .empty:
+                        var l=5
                     }
-                    if x == 1{
-                        Color.blue
-                    }
-                    if x==2{
-                        
-                        if showCross{
-                            Cross(itemsize: itemsInSquareLength )
-                        }
-                        
-                        Rectangle().fill(.clear).contentShape(Rectangle())
-                            .onTapGesture {print("hi from cross")
-                            showCross.toggle()
-                            }
-                    }
-                    if x == 7{
-                        Color.green
-                    }
-                    
+                    //TODO: create function for switchstate and kick out dummy var in .empty state
+                
+
                 }
                 .frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .onTapGesture {print("hi from square")}
+                    .onTapGesture {print("hi from square \(square)")
+                        changeOneToCircle()
+                    }
                     //.background(mycolor)
+            
             }
         }
     }
 }
-
 
 
 

@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct TicTacToeApp: App {
+    init() {
+
+     }
     var body: some Scene {
         WindowGroup {
             MatchView()
