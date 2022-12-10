@@ -48,7 +48,7 @@ struct MyNewSquareFields: View {
                 }
                 .frame(width: desiredSquareLength, height: desiredSquareLength)
                     .onTapGesture {print("hi from square \(square)")
-                        changeOneToCircle()
+                        //changeOneToCircle()
                         if viewModel.isMatchLive{
                             //print("okay")
                             reactToSquareTouch(square: square)

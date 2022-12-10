@@ -23,7 +23,9 @@ class Match{
     }
     
     func checkForEndMatch(){
-        checkForWin()
+        if checkForWin() != nil{
+            return 
+        }
         if checkForTie(){
             publisher.infoText = "It's a tie!"
             print("It's a tie!")
@@ -39,11 +41,62 @@ class Match{
         }
     }
     
-    func checkForWin(){
-        
-    //012  winner is: 012, 345, 678, 036, 147, 258, 048
+    func checkForWin() -> PlayerTurn?{
+        if checkForWinOf(player: .playerOne){
+            publisher.isMatchLive = false
+            print("Player One won(Circle)!")
+            return .playerOne
+        }
+        if checkForWinOf(player: .playerTwo){
+            print("Player Two won(Cross)!")
+            publisher.isMatchLive = false
+            return .playerTwo
+        }
+    //012  winner is: 012, 345, 678, 036, 147, 258, 048, 246
     //345
     //678
+        return nil
+    }
+    
+    func checkForWinOf(player: PlayerTurn) -> Bool{
+        var item: SquareState
+        if player == .playerOne{
+            item = .circle
+        }
+        else{
+            item = .cross
+        }
+        
+        //horizontal
+        if publisher.squares[0] == item && publisher.squares[1] == item && publisher.squares[2] == item{
+            return true
+        }
+        if publisher.squares[3] == item && publisher.squares[4] == item && publisher.squares[5] == item{
+            return true
+        }
+        if publisher.squares[6] == item && publisher.squares[7] == item && publisher.squares[8] == item{
+            return true
+        }
+        
+        //vertical
+        if publisher.squares[0] == item && publisher.squares[3] == item && publisher.squares[6] == item{
+            return true
+        }
+        if publisher.squares[1] == item && publisher.squares[4] == item && publisher.squares[7] == item{
+            return true
+        }
+        if publisher.squares[2] == item && publisher.squares[5] == item && publisher.squares[8] == item{
+            return true
+        }
+        
+        //diagonal
+        if publisher.squares[0] == item && publisher.squares[4] == item && publisher.squares[8] == item{
+            return true
+        }
+        if publisher.squares[2] == item && publisher.squares[4] == item && publisher.squares[6] == item{
+            return true
+        }
+        return false
     }
     
     func checkForTie() -> Bool{
