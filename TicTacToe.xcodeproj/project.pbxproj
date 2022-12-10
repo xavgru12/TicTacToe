@@ -15,6 +15,7 @@
 		7D5CEF762927F9E100A74DAC /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF752927F9E100A74DAC /* TicTacToeUITests.swift */; };
 		7D5CEF782927F9E100A74DAC /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF772927F9E100A74DAC /* TicTacToeUITestsLaunchTests.swift */; };
 		7D7CF2F4292FC9A2000A5A18 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */; };
+		7D9AA3EE2944FFBD00456BC8 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9AA3ED2944FFBD00456BC8 /* Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7D5CEF752927F9E100A74DAC /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		7D5CEF772927F9E100A74DAC /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		7D9AA3ED2944FFBD00456BC8 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */,
 				7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */,
 				7D5CEF602927F9E100A74DAC /* Preview Content */,
+				7D9AA3ED2944FFBD00456BC8 /* Match.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				7D7CF2F4292FC9A2000A5A18 /* MatchView.swift in Sources */,
 				7D56A57D29353AA80048E668 /* GridSquaresViewModel.swift in Sources */,
 				7D5CEF5B2927F9DD00A74DAC /* TicTacToeApp.swift in Sources */,
+				7D9AA3EE2944FFBD00456BC8 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

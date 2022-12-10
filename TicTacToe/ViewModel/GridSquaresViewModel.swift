@@ -26,6 +26,14 @@ class MatchViewModel: ObservableObject{
             .empty, .empty, .empty,
             .circle, .empty, .cross,
             .empty, .empty, .empty]
+    @Published var isMatchLive: Bool = true
+    @Published var infoText: String = ""
+    
+    func reactToSquareTouch(square: Int){
+        if squares[square] != .empty{
+            reactToSquareTouch(square: square)
+        }
+    }
 }
 
 
