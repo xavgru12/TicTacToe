@@ -8,15 +8,36 @@
 import SwiftUI
 
 struct MatchView: View {
+    @State private var changeButtonColour = true
+    @StateObject var viewModel: MatchViewModel
     var body: some View {
         let gridLength = UIScreen.main.bounds.width*0.9
         let squareLength = gridLength/3
-        ZStack {
-            GridLayout(desiredwidth: gridLength)
-            MyNewSquareFields(desiredSquareLength: squareLength, viewModel: matchViewModel)
-        }.frame(width: gridLength, height: gridLength)
+        var ButtonColour = Color.blue
+        ZStack{
+            Color.black
+        VStack(spacing: 50){
+            Text(viewModel.infoText).font(.system(size: 35, weight: .light, design: .serif)).foregroundColor(.blue)
+            ZStack {
+                GridLayout(desiredwidth: gridLength)
+                MyNewSquareFields(desiredSquareLength: squareLength, viewModel: viewModel)
+            }.frame(width: gridLength, height: gridLength)
+            //Button("Sign In", action: addItem)
+            //Button("Register", action: addItem)
+            Button(action: viewModel.newMatch){
+                if !viewModel.isMatchLive{
+                Text("new match").fontWeight(.bold).font(.title).foregroundColor(.blue)      .padding(12).overlay(
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.blue, lineWidth: 5)//.background(ButtonColour)
+                )}
+            }
+           
+        }
+        }.edgesIgnoringSafeArea(.all)
+        //.buttonStyle(.bordered)     }
     }
 }
+func addItem(){}
 
 
 struct MyNewSquareFields: View {
@@ -68,7 +89,7 @@ struct MyNewSquareFields: View {
 
 struct improveAdaptiveGrid_Previews: PreviewProvider {
     static var previews: some View {
-        MatchView()
+        MatchView(viewModel: matchViewModel)
     }
 }
 

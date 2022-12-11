@@ -34,6 +34,16 @@ class MatchViewModel: ObservableObject{
             reactToSquareTouch(square: square)
         }
     }
+    func newMatch(){
+
+        isMatchLive = true
+        infoText = ""
+        
+        for square in squares.indices {
+            squares[square] = .empty
+      
+        }
+    }
 }
 
 

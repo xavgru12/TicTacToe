@@ -35,20 +35,24 @@ class Match{
     func switchPlayerTurn(){
         if playerTurn == .playerOne{
             playerTurn = .playerTwo
+            publisher.infoText = "Next turn: X"
         }
         else{
             playerTurn = .playerOne
+            publisher.infoText = "Next turn: O"
         }
     }
     
     func checkForWin() -> PlayerTurn?{
         if checkForWinOf(player: .playerOne){
             publisher.isMatchLive = false
-            print("Player One won(Circle)!")
+            print("Player One won(O)!")
+            publisher.infoText = "Player One won(O)!"
             return .playerOne
         }
         if checkForWinOf(player: .playerTwo){
-            print("Player Two won(Cross)!")
+            print("Player Two won(X)!")
+            publisher.infoText = "Player Two won(X)!"
             publisher.isMatchLive = false
             return .playerTwo
         }
