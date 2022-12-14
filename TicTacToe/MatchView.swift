@@ -15,7 +15,7 @@ struct MatchView: View {
         let squareLength = gridLength/3
         var ButtonColour = Color.blue
         ZStack{
-            Color.black
+            Color.white
         VStack(spacing: 50){
             Text(viewModel.infoText).font(.system(size: 35, weight: .light, design: .serif)).foregroundColor(.blue)
             ZStack {
@@ -39,6 +39,20 @@ struct MatchView: View {
 }
 func addItem(){}
 
+//    fileprivate func extractedFunc(squareState: SquareState, length: CGFloat) -> AnyView {
+//
+//        ZStack(){
+//            switch squareState{
+//
+//            case .circle:
+//                return Circle().stroke(.blue, lineWidth: 8).frame(width: length, height: length)
+//            case .cross:
+//                return Cross(itemsize: length )
+//            case .empty:
+//                return
+//
+//
+//        }
 
 struct MyNewSquareFields: View {
     let desiredSquareLength: CGFloat
@@ -51,38 +65,50 @@ struct MyNewSquareFields: View {
         let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
         let mycolor = Color.orange
         LazyVGrid(columns: gridItemLayout, spacing: 0){
+            
             ForEach(0..<9){ square in
-            //for squareState in testView.squares{
-                //var x = $0
-                ZStack(){Text("Test")
-                    switch viewModel.squares[square]{
-                    case .circle:
-                        Circle().stroke(.blue, lineWidth: 8).frame(width: itemsInSquareLength, height: itemsInSquareLength)
-                    case .cross:
-                        Cross(itemsize: itemsInSquareLength )
-                    case .empty:
-                        var l=5
-                    }
-                    //TODO: create function for switchstate and kick out dummy var in .empty state
-                
-
-                }
-                .frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .onTapGesture {print("hi from square \(square)")
-                        //changeOneToCircle()
-                        if viewModel.isMatchLive{
-                            //print("okay")
-                            reactToSquareTouch(square: square)
-                        }
-                        
-                    }
-                    //.background(mycolor)
+                SquareStateView(squareNumber: square, squareLength: desiredSquareLength, viewModel: viewModel)
             
             }
         }
     }
 }
 
+
+struct SquareStateView: View {
+    var squareNumber: Int
+    let squareLength: CGFloat
+    @StateObject var viewModel: MatchViewModel
+    var body: some View {
+        let lengthOfItemsInSquare = squareLength*0.6
+
+        ZStack(){
+            showSquareState(squareState: viewModel.squares[squareNumber], length: lengthOfItemsInSquare)
+        }.frame(width: squareLength, height: squareLength)
+            .contentShape(Rectangle())
+             .onTapGesture {print("hi from square \(squareNumber)")
+                    if viewModel.isMatchLive{
+                        reactToSquareTouch(square: squareNumber)
+                    }
+                    
+             }
+    }
+}
+
+
+func showSquareState(squareState: SquareState, length: CGFloat) -> some View{
+    Group{
+        switch squareState{
+        case .circle:
+            Circle().stroke(.blue, lineWidth: 8).frame(width: length, height: length)
+        case .cross:
+            Cross(itemsize: length )
+        case .empty:
+            EmptyView()
+        }
+            
+    }
+}
 
 
 
@@ -152,3 +178,4 @@ struct Cross: View {
         }.frame(width: itemsize, height: itemsize)
     }
 }
+
