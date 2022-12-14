@@ -47,7 +47,7 @@ struct MyNewSquareFields: View {
     @State private var showCross = false
     
     var body: some View {
-        let itemsInSquareLength = desiredSquareLength*0.7
+        let itemsInSquareLength = desiredSquareLength*0.6
         let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
         let mycolor = Color.orange
         LazyVGrid(columns: gridItemLayout, spacing: 0){
@@ -57,7 +57,7 @@ struct MyNewSquareFields: View {
                 ZStack(){Text("Test")
                     switch viewModel.squares[square]{
                     case .circle:
-                        Circle().stroke(.blue, lineWidth: 10).frame(width: itemsInSquareLength, height: itemsInSquareLength)
+                        Circle().stroke(.blue, lineWidth: 8).frame(width: itemsInSquareLength, height: itemsInSquareLength)
                     case .cross:
                         Cross(itemsize: itemsInSquareLength )
                     case .empty:
@@ -147,7 +147,7 @@ struct Cross: View {
                 path.addLine(to: leftDownCorner)
 
                 path.closeSubpath()
-            }.stroke(.blue, lineWidth: 10)
+            }.stroke(.blue, lineWidth: 8)
         
         }.frame(width: itemsize, height: itemsize)
     }

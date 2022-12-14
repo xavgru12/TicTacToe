@@ -109,6 +109,7 @@ class Match{
                 return false
             }
         }
+        publisher.isMatchLive = false
         return true
     }
     
