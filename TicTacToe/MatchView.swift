@@ -41,8 +41,6 @@ struct MatchView: View {
 struct SquaresInGrid: View {
     let desiredSquareLength: CGFloat
     @StateObject var viewModel: MatchViewModel
-    @State private var showCircle = false
-    @State private var showCross = false
     
     var body: some View {
    

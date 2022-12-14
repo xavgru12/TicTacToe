@@ -47,12 +47,12 @@ class Match{
         if checkForWinOf(player: .playerOne){
             publisher.isMatchLive = false
             print("Player One won(O)!")
-            publisher.infoText = "Player One won(O)!"
+            publisher.infoText = "O has won! 🎉"
             return .playerOne
         }
         if checkForWinOf(player: .playerTwo){
             print("Player Two won(X)!")
-            publisher.infoText = "Player Two won(X)!"
+            publisher.infoText = "X has won! 🎉"
             publisher.isMatchLive = false
             return .playerTwo
         }
@@ -131,7 +131,7 @@ class Match{
     //var itemIsSet: Bool
         //print("about to set to circle")
         //publisher.squares[square] = .circle
-        var itemIsSet: Bool = setItemInSquare(square: square)
+        let itemIsSet: Bool = setItemInSquare(square: square)
         if itemIsSet{
             //print("done setting item")
             switchPlayerTurn()

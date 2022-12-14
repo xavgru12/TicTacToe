@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI //only imported for quick testing
 
 enum SquareState {
     case circle
@@ -15,11 +14,6 @@ enum SquareState {
 }
 
 
-struct SquareTestView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack{}
-    }
-}
 
 class MatchViewModel: ObservableObject{
         @Published var squares: [SquareState] = [
