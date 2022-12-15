@@ -46,13 +46,13 @@ class Match{
     func checkForWin() -> PlayerTurn?{
         if checkForWinOf(player: .playerOne){
             publisher.isMatchLive = false
-            print("Player One won(O)!")
-            publisher.infoText = "O has won! 🎉"
+            print("O won!")
+            publisher.infoText = "O won! 🎉"
             return .playerOne
         }
         if checkForWinOf(player: .playerTwo){
-            print("Player Two won(X)!")
-            publisher.infoText = "X has won! 🎉"
+            print("X won!")
+            publisher.infoText = "X won! 🎉"
             publisher.isMatchLive = false
             return .playerTwo
         }
