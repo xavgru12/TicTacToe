@@ -7,7 +7,12 @@
 
 import Foundation
 
-func reactToSquareTouch(square: Int){
+enum PlayerTurn{
+    case playerOne
+    case playerTwo
+}
+
+func matchReactToSquareTouch(square: Int){
     match.reactToSquareTouch(square: square)
 }
 var match=Match()
@@ -113,10 +118,8 @@ class Match{
         return true
     }
     
-    func setItemInSquare(square: Int) -> Bool{
-        if publisher.squares[square] != .empty{
-            return false
-        }
+    func setItemInSquare(square: Int) {
+
         
         if playerTurn == .playerOne{
             publisher.squares[square] = .circle
@@ -124,25 +127,13 @@ class Match{
         else{
             publisher.squares[square] = .cross
         }
-        return true
+        
     }
     
     func reactToSquareTouch(square: Int){
-    //var itemIsSet: Bool
-        //print("about to set to circle")
-        //publisher.squares[square] = .circle
-        let itemIsSet: Bool = setItemInSquare(square: square)
-        if itemIsSet{
-            //print("done setting item")
-            switchPlayerTurn()
-            checkForEndMatch()
-        }
+        setItemInSquare(square: square)
+        switchPlayerTurn()
+        checkForEndMatch()
+        
     }
-}
-
-//switchPlayerTurn
-
-enum PlayerTurn{
-    case playerOne
-    case playerTwo
 }

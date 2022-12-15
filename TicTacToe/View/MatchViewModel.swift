@@ -13,19 +13,22 @@ enum SquareState {
     case empty
 }
 
-
-
 class MatchViewModel: ObservableObject{
-        @Published var squares: [SquareState] = [
-            .empty, .empty, .empty,
-            .circle, .empty, .cross,
-            .empty, .empty, .empty]
-    @Published var isMatchLive: Bool = true
-    @Published var infoText: String = ""
+    @Published var squares: [SquareState]
+    @Published var isMatchLive: Bool
+    @Published var infoText: String
     
+    init(){
+        isMatchLive = true
+        infoText = ""
+        squares = [
+            .empty, .empty, .empty,
+            .empty, .empty, .empty,
+            .empty, .empty, .empty]
+    }
     func reactToSquareTouch(square: Int){
-        if squares[square] != .empty{
-            reactToSquareTouch(square: square)
+        if squares[square] == .empty && isMatchLive{
+            matchReactToSquareTouch(square: square)
         }
     }
     func newMatch(){
@@ -42,10 +45,7 @@ class MatchViewModel: ObservableObject{
 
 
 var matchViewModel=MatchViewModel()
-func changeOneToCircle(){
-    matchViewModel.squares[1] = .circle
-}
-var myview2 = matchViewModel // also works to give argument myview2 to View
+
 
 
 

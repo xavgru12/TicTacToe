@@ -65,11 +65,9 @@ struct SquareStateView: View {
             showSquareState(squareState: viewModel.squares[squareNumber], length: lengthOfItemsInSquare)
         }.frame(width: squareLength, height: squareLength)
          .contentShape(Rectangle())
-         .onTapGesture {print("hi from square \(squareNumber)")
-                    if viewModel.isMatchLive{
-                        reactToSquareTouch(square: squareNumber)
-                    }
-                    
+         .onTapGesture {
+             print("hi from square \(squareNumber)")
+             viewModel.reactToSquareTouch(square: squareNumber)
           }
     }
 }
