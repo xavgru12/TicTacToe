@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D56A57D29353AA80048E668 /* GridSquaresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56A57C29353AA80048E668 /* GridSquaresViewModel.swift */; };
+		7D56A57D29353AA80048E668 /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56A57C29353AA80048E668 /* MatchViewModel.swift */; };
 		7D5CEF5B2927F9DD00A74DAC /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */; };
 		7D5CEF5F2927F9E100A74DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */; };
 		7D5CEF622927F9E100A74DAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D5CEF612927F9E100A74DAC /* Preview Assets.xcassets */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D56A57C29353AA80048E668 /* GridSquaresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSquaresViewModel.swift; sourceTree = "<group>"; };
+		7D56A57C29353AA80048E668 /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		7D5CEF572927F9DD00A74DAC /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,12 +75,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D56A57B293532340048E668 /* ViewModel */ = {
+		7D40704B294BA90E00E4FA1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7D56A57C29353AA80048E668 /* GridSquaresViewModel.swift */,
+				7D9AA3ED2944FFBD00456BC8 /* Match.swift */,
+				7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */,
 			);
-			path = ViewModel;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D56A57B293532340048E668 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */,
+				7D56A57C29353AA80048E668 /* MatchViewModel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7D5CEF4E2927F9DD00A74DAC = {
@@ -106,12 +116,10 @@
 		7D5CEF592927F9DD00A74DAC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				7D56A57B293532340048E668 /* ViewModel */,
-				7D7CF2F3292FC9A2000A5A18 /* MatchView.swift */,
-				7D5CEF5A2927F9DD00A74DAC /* TicTacToeApp.swift */,
+				7D40704B294BA90E00E4FA1C /* Model */,
+				7D56A57B293532340048E668 /* View */,
 				7D5CEF5E2927F9E100A74DAC /* Assets.xcassets */,
 				7D5CEF602927F9E100A74DAC /* Preview Content */,
-				7D9AA3ED2944FFBD00456BC8 /* Match.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -272,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D7CF2F4292FC9A2000A5A18 /* MatchView.swift in Sources */,
-				7D56A57D29353AA80048E668 /* GridSquaresViewModel.swift in Sources */,
+				7D56A57D29353AA80048E668 /* MatchViewModel.swift in Sources */,
 				7D5CEF5B2927F9DD00A74DAC /* TicTacToeApp.swift in Sources */,
 				7D9AA3EE2944FFBD00456BC8 /* Match.swift in Sources */,
 			);
