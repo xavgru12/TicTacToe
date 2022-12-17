@@ -1,5 +1,5 @@
 //
-//  GridSquaresViewModel.swift
+//  MatchViewModel.swift
 //  TicTacToe
 //
 //  Created by Xaver Gruber on 28.11.22.

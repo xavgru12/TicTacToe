@@ -14,7 +14,8 @@ struct MatchView: View {
         let gridLength = UIScreen.main.bounds.width*0.9
         let squareLength = gridLength/3
         ZStack{
-            Color.black
+            Color(hex: 0x252525)
+            
             VStack(spacing: 50){
                 
                 Text(viewModel.infoText).font(.system(size: 35, weight: .light, design: .serif)).foregroundColor(.blue)
@@ -156,3 +157,14 @@ struct Cross: View {
     }
 }
 
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+} //252525
