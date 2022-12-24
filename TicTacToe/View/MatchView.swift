@@ -1,5 +1,5 @@
 //
-//  ImproveAdaptiveGrid.swift
+//  MatchView.swift
 //  TicTacToe
 //
 //  Created by Xaver Gruber on 22.11.22.
@@ -8,62 +8,92 @@
 import SwiftUI
 
 struct MatchView: View {
+    @State private var changeButtonColour = true
+    @StateObject var viewModel: MatchViewModel
     var body: some View {
         let gridLength = UIScreen.main.bounds.width*0.9
         let squareLength = gridLength/3
-        ZStack {
-            GridLayout(desiredwidth: gridLength)
-            MyNewSquareFields(desiredSquareLength: squareLength, viewModel: matchViewModel)
-        }.frame(width: gridLength, height: gridLength)
+        ZStack{
+            Color(hex: 0x252525)
+            
+            VStack(spacing: 50){
+                
+                Text(viewModel.infoText).font(.system(size: 35, weight: .light, design: .serif)).foregroundColor(.blue)
+                
+                ZStack{
+                    GridLayout(desiredwidth: gridLength)
+                    SquaresInGrid(desiredSquareLength: squareLength, viewModel: viewModel)
+                }.frame(width: gridLength, height: gridLength)
+      
+                Button(action: viewModel.newMatch){
+                    if !viewModel.isMatchLive{
+                    Text("new match").fontWeight(.bold).font(.title).foregroundColor(.blue)      .padding(12).overlay(
+                        RoundedRectangle(cornerRadius: 40)
+                            .stroke(Color.blue, lineWidth: 5)
+                    )}
+                }
+            
+            }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
 
-struct MyNewSquareFields: View {
+struct SquaresInGrid: View {
     let desiredSquareLength: CGFloat
     @StateObject var viewModel: MatchViewModel
-    @State private var showCircle = false
-    @State private var showCross = false
     
     var body: some View {
-        let itemsInSquareLength = desiredSquareLength*0.7
+   
         let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-        let mycolor = Color.orange
         LazyVGrid(columns: gridItemLayout, spacing: 0){
             ForEach(0..<9){ square in
-            //for squareState in testView.squares{
-                //var x = $0
-                ZStack(){Text("Test")
-                    switch viewModel.squares[square]{
-                    case .circle:
-                        Circle().stroke(.blue, lineWidth: 10).frame(width: itemsInSquareLength, height: itemsInSquareLength)
-                    case .cross:
-                        Cross(itemsize: itemsInSquareLength )
-                    case .empty:
-                        var l=5
-                    }
-                    //TODO: create function for switchstate and kick out dummy var in .empty state
-                
-
-                }
-                .frame(width: desiredSquareLength, height: desiredSquareLength)
-                    .onTapGesture {print("hi from square \(square)")
-                        changeOneToCircle()
-                    }
-                    //.background(mycolor)
-            
+                SquareStateView(squareNumber: square, squareLength: desiredSquareLength, viewModel: viewModel)
             }
         }
     }
 }
 
 
+struct SquareStateView: View {
+    var squareNumber: Int
+    let squareLength: CGFloat
+    @StateObject var viewModel: MatchViewModel
+    var body: some View {
+        let lengthOfItemsInSquare = squareLength*0.6
+
+        ZStack(){
+            showSquareState(squareState: viewModel.squares[squareNumber], length: lengthOfItemsInSquare)
+        }.frame(width: squareLength, height: squareLength)
+         .contentShape(Rectangle())
+         .onTapGesture {
+             print("hi from square \(squareNumber)")
+             viewModel.reactToSquareTouch(square: squareNumber)
+          }
+    }
+}
+
+
+func showSquareState(squareState: SquareState, length: CGFloat) -> some View{
+    Group{
+        switch squareState{
+        case .circle:
+            Circle().stroke(.blue, lineWidth: 8).frame(width: length, height: length)
+        case .cross:
+            Cross(itemsize: length )
+        case .empty:
+            EmptyView()
+        }
+            
+    }
+}
 
 
 
-struct improveAdaptiveGrid_Previews: PreviewProvider {
+
+struct MatchView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchView()
+        MatchView(viewModel: matchViewModel)
     }
 }
 
@@ -121,8 +151,20 @@ struct Cross: View {
                 path.addLine(to: leftDownCorner)
 
                 path.closeSubpath()
-            }.stroke(.blue, lineWidth: 10)
+            }.stroke(.blue, lineWidth: 8)
         
         }.frame(width: itemsize, height: itemsize)
     }
 }
+
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+} //252525
